@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feliz Cumpleaños ❤️</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+    color:white;
+    text-align:center;
+    overflow-x:hidden;
+}
+
+.container{
+    padding:40px 20px;
+    max-width:900px;
+    margin:auto;
+}
+
+h1{
+    font-size:3rem;
+    animation:latido 1s infinite;
+    margin-bottom:20px;
+}
+
+p{
+    font-size:1.3rem;
+    margin-bottom:20px;
+}
+
+button{
+    padding:12px 25px;
+    border:none;
+    border-radius:25px;
+    background:white;
+    color:#ff4d6d;
+    font-size:1rem;
+    cursor:pointer;
+    font-weight:bold;
+    margin-bottom:30px;
+}
+
+button:hover{
+    transform:scale(1.1);
+}
+
+@keyframes latido{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.1);}
+    100%{transform:scale(1);}
+}
+
+/* Carrusel */
+
+.carrusel{
+    display:flex;
+    justify-content:center;
+    margin-top:20px;
+}
+
+.carrusel img{
+    width:100%;
+    max-width:600px;
+    height:400px;
+    object-fit:cover;
+    border-radius:20px;
+    border:5px solid white;
+    box-shadow:0 5px 20px rgba(0,0,0,0.3);
+    transition:opacity 1s ease;
+}
+
+/* Corazones */
+
+.corazon{
+    position:fixed;
+    color:red;
+    animation:subir 5s linear infinite;
+    pointer-events:none;
+}
+
+@keyframes subir{
+    from{
+        transform:translateY(100vh);
+        opacity:1;
+    }
+    to{
+        transform:translateY(-100px);
+        opacity:0;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>🎂 Feliz Cumpleaños Mi Amor ❤️</h1>
+
+    <p>
+        Hoy es un día muy especial porque celebra la llegada de la persona
+        que ilumina mi vida. Gracias por cada sonrisa, cada abrazo y cada
+        momento que compartimos juntos.
+    </p>
+
+    <h2>💖 Te Amo Muchísimo 💖</h2>
+
+    <br>
+
+    <button onclick="mostrarMensaje()">
+        Haz clic aquí ❤️
+    </button>
+
+    <h2>📸 Nuestros Recuerdos</h2>
+
+    <div class="carrusel">
+        <img id="slider" src="imagenes/1.jpg" alt="Nuestros recuerdos">
+    </div>
+
+</div>
+
+<script>
+
+function mostrarMensaje(){
+    alert("❤️ Feliz cumpleaños mi amor. Gracias por existir y por hacer mi vida más feliz. Te amo muchísimo ❤️");
+}
+
+/* Corazones flotantes */
+
+function crearCorazon(){
+    const corazon = document.createElement("div");
+
+    corazon.classList.add("corazon");
+    corazon.innerHTML = "❤️";
+
+    corazon.style.left = Math.random() * 100 + "vw";
+    corazon.style.fontSize = Math.random() * 20 + 15 + "px";
+
+    document.body.appendChild(corazon);
+
+    setTimeout(()=>{
+        corazon.remove();
+    },5000);
+}
+
+setInterval(crearCorazon,300);
+
+/* Carrusel automático */
+
+const fotos = [
+    "imagenes/1.jpg",
+    "imagenes/2.jpg",
+    "imagenes/3.jpg",
+    "imagenes/4.jpg",
+    "imagenes/5.jpg"
+];
+
+let indice = 0;
+
+function cambiarFoto(){0
+
+    const slider = document.getElementById("slider");
+
+    slider.style.opacity = 0;
+
+    setTimeout(()=>{
+        indice = (indice + 1) % fotos.length;
+        slider.src = fotos[indice];
+        slider.style.opacity = 1;
+    },500);
+
+}
+
+setInterval(cambiarFoto,3000);
+
+</script>
+
+</body>
+</html>
